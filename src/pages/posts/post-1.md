@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "La primera publicación"
-pubDate: 24/09/2026
+pubDate: 2026/09/24
 description: "Primera publicación."
 author: "Fernando Martinez"
 image:

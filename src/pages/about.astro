@@ -1,14 +1,12 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.css";
-import Footer from "../components/Footer.astro";
-import Navigation from "../components/Navigation.astro";
-const pageTitle = "Sobre mi";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Sobre mí";
 
 const identity = {
   firstName: "Fernando",
   country: "México",
-  occupation: "Estudiante Dessarrollador de software",
+  occupation: "Estudiante Desarrollador de software",
   hobbies: ["Fútbol", "Videojuegos", "Música", "Cine"],
 };
 
@@ -20,55 +18,33 @@ const skills = [
   "Astro",
   "Redacción de documentos",
 ];
+
 const happy = true;
-const finished = false;
+const finished = true;
 const goal = 3;
 const skillColor = "crimson";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-    <style>
-      h1 {
-        color: var(--skillColor);
-        font-size: 4rem;
-      }
-      .skill {
-        color: blue;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <Navigation />
-    <h1>{pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
+  <p>Un poco sobre mí:</p>
+  <ul>
+    <li>Me llamo {identity.firstName}.</li>
+    <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
+    {
+      identity.hobbies.length >= 2 && (
+        <li>
+          Mis aficiones son: {identity.hobbies[0]} y {identity.hobbies[1]}
+        </li>
+      )
+    }
+  </ul>
 
-    <p>Un poco sobre mí:</p>
-    <ul>
-      <li>Me llamo {identity.firstName}.</li>
-      <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
-      {
-        identity.hobbies.length >= 2 && (
-          <li>
-            Mis aficiones son: {identity.hobbies[0]} y {identity.hobbies[1]}
-          </li>
-        )
-      }
-    </ul>
-    <p>Mis habilidades son:</p>
-    <ul>
-      {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-    <Footer />
-    <script>
-      import "../scripts/menu.js";
-    </script>
-  </body>
+  <p>Mis habilidades son:</p>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+
   {happy && <p>Estoy feliz con el curso de web 2</p>}
-
   {finished && <p>Ya he terminado el curso</p>}
 
   {
@@ -78,4 +54,11 @@ const skillColor = "crimson";
       <p>Mi objetivo no son 3 días.</p>
     )
   }
-</html>
+
+  <style>
+    .skill {
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+</BaseLayout>
