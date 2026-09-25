@@ -1,4 +1,8 @@
 ---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
 const pageTitle = "Sobre mi";
 
 const identity = {
@@ -19,6 +23,7 @@ const skills = [
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "crimson";
 ---
 
 <html lang="es">
@@ -28,7 +33,7 @@ const goal = 3;
     <title>{pageTitle}</title>
     <style>
       h1 {
-        color: red;
+        color: var(--skillColor);
         font-size: 4rem;
       }
       .skill {
@@ -38,20 +43,17 @@ const goal = 3;
     </style>
   </head>
   <body>
-    <a href="/">Inicio</a><br />
-    <a href="/about/">Sobre mi</a><br />
-    <a href="/blog/">Blog</a><br />
+    <Navigation />
     <h1>{pageTitle}</h1>
 
-    <p>He aquí algunos datos sobre mí:</p>
+    <p>Un poco sobre mí:</p>
     <ul>
       <li>Me llamo {identity.firstName}.</li>
       <li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
       {
         identity.hobbies.length >= 2 && (
           <li>
-            Dos de mis aficiones son: {identity.hobbies[0]} y{" "}
-            {identity.hobbies[1]}
+            Mis aficiones son: {identity.hobbies[0]} y {identity.hobbies[1]}
           </li>
         )
       }
@@ -60,14 +62,18 @@ const goal = 3;
     <ul>
       {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
+    <Footer />
+    <script>
+      import "../scripts/menu.js";
+    </script>
   </body>
-  {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+  {happy && <p>Estoy feliz con el curso de web 2</p>}
 
-  {finished && <p>¡He terminado este tutorial!</p>}
+  {finished && <p>Ya he terminado el curso</p>}
 
   {
     goal === 3 ? (
-      <p>Mi objetivo es terminar en 3 días.</p>
+      <p>Quiero terminar este curso en los siguientes 3 días de ser posible.</p>
     ) : (
       <p>Mi objetivo no son 3 días.</p>
     )

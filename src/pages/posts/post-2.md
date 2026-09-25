@@ -1,7 +1,8 @@
 ---
-title: Mi segunda publicación en el blog
-author: Alumno de Astro
-description: "Después de aprender un poco de Astro, ¡no podía parar!"
+layout: ../../layouts/MarkdownPostLayout.astro
+title: Segunda Publicación
+author: Fernando Martinez
+description: "Tutorial de astro, es la cabra"
 image:
   url: "https://docs.astro.build/assets/arc.webp"
   alt: "El logotipo de Astro sobre un fondo oscuro con un arco degradado en tonos púrpura."
